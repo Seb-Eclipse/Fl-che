@@ -41,5 +41,416 @@ public class Circle implements Methoden {
 
 
 }
+package Flaechen;
+
+import java.util.Scanner;
+
+
+public class CircleView implements Methoden {
+
+	public double radius;
+	public double area;
+	static final double PI = Math.PI;
+
+	@Override  
+	public double getArea() {
+		return PI * radius * radius;
+	}
+/*
+	public double getRadius() {
+		return this.radius;
+	}
+
+	public void setRadius(double radius) {
+		if (radius < 0) {
+			this.radius = 0;
+		}
+		else {
+			this.radius = radius;
+		}
+	}
+*/
+
+
+/*	public double calcArea(double radius) {
+		this.area = PI * radius * radius;
+		return this.area;
+	}
+*/
+	public CircleView() {
+		
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Kreis-Rechner");
+		System.out.println("-------------");
+		System.out.print("Bitte Radius eingeben: ");
+
+		this.radius = sc.nextDouble();
+		Circle C1 = new Circle (this.radius);
+		System.out.println("Fläche: " + C1.area);
+
+		sc.close();
+	}
+	
+
+
+
+}
+package Flaechen;
+
+public class Hexagon implements Methoden {
+
+	double length;
+	public double area;
+
+	@Override
+	public double getArea() {
+		return 3 / 2 * Math.pow(length, length) * Math.sqrt(3);
+	}
+
+	public double calcArea(double length) {
+		this.area = 3 / 2 * Math.pow(length, length) * Math.sqrt(3);
+		return this.area;
+
+	}
+
+	public Hexagon(double length) {
+		this.length = calcArea(length);
+
+	}
+}package Flaechen;
+
+import java.util.Scanner;
+
+
+public class HexagonView implements Methoden {
+
+	public double length;
+	public double area;
+	
+
+	@Override  
+	public double getArea() {
+		return 3 / 2 * Math.pow(length, length) * Math.sqrt(3);
+	}
+/*
+	public double getRadius() {
+		return this.radius;
+	}
+
+	public void setRadius(double radius) {
+		if (radius < 0) {
+			this.radius = 0;
+		}
+		else {
+			this.radius = radius;
+		}
+	}
+*/
+
+
+/*	public double calcArea(double radius) {
+		this.area = PI * radius * radius;
+		return this.area;
+	}
+*/
+	public HexagonView() {
+		
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Hexagon-Rechner");
+		System.out.println("-------------");
+		System.out.print("Bitte Seitenlänge eingeben: ");
+
+		this.length = sc.nextDouble();
+		Hexagon H1 = new Hexagon (this.length);
+		System.out.println("Fläche: " + H1.area);
+
+		sc.close();
+	}
+	
+
+
+
+}
+package Flaechen;
+
+public interface Methoden {
+	double getArea();
+
+}
+package Flaechen;
+
+public class Overview {
+
+}
+package Flaechen;
+
+import java.util.Scanner;
+
+public class Rechner {
+
+	public static void main(String[] args) {
+
+		int typ = 0;
+
+		do {
+
+			String typString = "";
+
+			Scanner sc = new Scanner(System.in);
+
+			do {
+				System.out.println("Flaechen-Rechner");
+				System.out.println("-------------");
+				System.out.println("AUSWAHL");
+				System.out.println("Kreis = 1");
+				System.out.println("Raute = 2");
+				System.out.println("Rechteck = 3");
+				System.out.println("Sechseck = 4");
+				System.out.println("-------------");
+
+				typString = sc.nextLine();
+
+				try {
+					typ = Integer.parseInt(typString);
+				} catch (NumberFormatException e) {
+					System.err.println(e.toString());
+					typ = -1;
+				}
+
+				// } while(!typString.equals("0") & !typString.equals("1") &
+				// !typString.equals("2")& !typString.equals("3")& !typString.equals("4"));
+
+			}
+
+			while (typ < 0 || typ > 4);
+
+			switch (typ) {
+
+			case 1:
+				// Kreis
+				CircleView C1 = new CircleView();
+				break;
+
+			case 2:
+				// Raute
+				RhombusView O1 = new RhombusView();
+				break;
+
+			case 3:
+				// Rechteck
+				RectangleView R1 = new RectangleView();
+
+				break;
+
+			case 4:
+				// Sechseck
+				HexagonView H1 = new HexagonView();
+				break;
+
+			case 0:
+				// Abbruch
+				System.out.println("Das System wird beendet und die folgende Ausgabe ist nichtig.");
+				break;
+
+			}
+
+		}
+
+		while (typ != 0);
+
+		// CircleView C1 = new CircleView();
+
+		// Circle C1 = new Circle(1);
+		// System.out.println("Area C1 = " + C1.getArea());
+
+		// RectangleView R1 = new RectangleView();
+
+		// Rectangle R1 = new Rectangle(3, 4);
+		// System.out.println("Area R1 = " + R1.getArea());
+
+		// RhombusView O1 = new RhombusView();
+
+		// Rhombus G1 = new Rhombus(5, 1);
+		// System.out.println("Area G1 = " + G1.getArea());
+
+		// HexagonView H1 = new HexagonView();
+
+		// Hexagon E1 = new Hexagon(3);
+		// System.out.println("Area E1 = " + E1.getArea());
+	}
+
+}
+package Flaechen;
+
+public class Rectangle implements Methoden {
+
+	public double area;
+	public double width, height;
+	
+	@Override
+	public double getArea() {
+		return width * height; 
+	}
+		
+		
+	public double calcArea(double height, double width) {
+		this.area = width * height;
+		return this.area;
+	}
+	
+	public Rectangle(double width, double height) {
+		this.height = calcArea(height, width);
+	 
+
+	}
+
+}package Flaechen;
+
+import java.util.Scanner;
+
+public class RectangleView {
+
+	public double width, height;
+	public double area;
+	
+	
+
+	//@Override
+	public double getArea() {
+		return width * height;
+	}
+/*
+	public double getRadius() {
+		return this.radius;
+	}
+
+	public void setRadius(double radius) {
+		if (radius < 0) {
+			this.radius = 0;
+		}
+		else {
+			this.radius = radius;
+		}
+	}
+*/
+
+
+/*	public double calcArea(double radius) {
+		this.area = PI * radius * radius;
+		return this.area;
+	}
+*/
+	public RectangleView() {
+		
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Rechteck-Rechner");
+		System.out.println("-------------");
+
+		System.out.print("Seitenlänge A: ");
+		double width = sc.nextDouble();
+
+		System.out.print("Seitenlänge B: ");
+		double height = sc.nextDouble();
+		
+		double area = width * height;
+		
+		System.out.println("Fläche: " + area);
+
+		sc.close();
+	}
+	
+
+
+
+}
+package Flaechen;
+
+public class Rhombus implements Methoden {
+
+	public double area;
+	public double length, height;
+	
+	@Override
+	public double getArea() {
+		return length * height; 
+	}
+		
+		
+	public double calcArea(double height, double length) {
+		this.area = length * height;
+		return this.area;
+	}
+	
+	public Rhombus(double length, double height) {
+		this.height = calcArea(height, length);
+	 
+
+	}
+
+}
+
+package Flaechen;
+
+import java.util.Scanner;
+
+public class RhombusView {
+
+	public double length, height;
+	public double area;
+	
+	
+
+	//@Override
+	public double getArea() {
+		return length * height;
+	}
+/*
+	public double getRadius() {
+		return this.radius;
+	}
+
+	public void setRadius(double radius) {
+		if (radius < 0) {
+			this.radius = 0;
+		}
+		else {
+			this.radius = radius;
+		}
+	}
+*/
+
+
+/*	public double calcArea(double radius) {
+		this.area = PI * radius * radius;
+		return this.area;
+	}
+*/
+	public RhombusView() {
+		
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Raute-Rechner");
+		System.out.println("-------------");
+
+		System.out.print("Seitenlänge A: ");
+		double length = sc.nextDouble();
+
+		System.out.print("Höhe B: ");
+		double height = sc.nextDouble();
+		
+		double area = length * height;
+		
+		System.out.println("Fläche: " + area);
+
+		sc.close();
+	}
+	
+
+
+
+}
 
 
