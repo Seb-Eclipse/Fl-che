@@ -1,0 +1,45 @@
+package Flaechen;
+
+public class Circle implements Methoden {
+
+	public double radius;
+	public double area;
+	static final double PI = Math.PI;
+
+	@Override
+	public double getArea() {
+		return PI * radius * radius;
+	}
+/*
+	public double getRadius() {
+		return this.radius;
+	}
+
+	public void setRadius(double radius) {
+		if (radius < 0) {
+			this.radius = 0;
+		}
+		else {
+			this.radius = radius;
+		}
+	}
+*/
+
+
+	public double calcArea(double radius) {
+		this.area = PI * radius * radius;
+		return this.area;
+	}
+
+
+
+	public Circle(double radius) {
+		this.radius = calcArea(radius);
+	}
+	
+
+
+
+}
+
+
